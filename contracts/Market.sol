@@ -178,6 +178,10 @@ contract Trade is Ownable {
         tax = a;
     }
 
+
+
+
+
     function marketPausable() external onlyOwner {
         marketPauseStatus = !marketPauseStatus;
     }

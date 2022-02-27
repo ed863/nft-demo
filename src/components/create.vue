@@ -9,7 +9,6 @@
     </div>
     <img v-if="picurl" class="pic" :src="this.picurl" />
     <button class="createButton" @click="create">创建此作品</button>
-    <button class="createButton" @click="test">test</button>
   </div>
 </template>
 
@@ -81,24 +80,6 @@ export default {
         }
       }
     },
-    async test() {
-      console.log("test function is running");
-      const web3Modal = new Web3Modal();
-      const connection = await web3Modal.connect();
-      const provider = new ethers.providers.Web3Provider(connection);
-      const signer = provider.getSigner();
-
-      /* next, create the item */
-      let contract = new ethers.Contract(tmknftaddress, TMKNFT.abi, signer);
-      let transaction = await contract.tokenOfOwnerByIndex(
-        "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
-        2
-      );
-      console.log("transaction");
-      console.log(transaction);
-      console.log(transaction._hex);
-    },
-    
   },
   computed: {
     res: function () {

@@ -5,7 +5,12 @@
         <img :src="item.file" />
         <p>作品名称：{{ item.name }}</p>
         <p>作品描述：{{ item.des }}</p>
-        <button @click="sell(index)">sell</button>
+        <!-- <button @click="sell(index)">点击卖出</button> -->
+        <button @click="show(index)">点击卖出</button>
+        <div class="sellDiv" v-if="whichToSell == index">
+          <input type="text" placeholder="输入价格" v-model="price" />
+          <button @click="sell(index)">确认</button>
+        </div>
       </li>
     </ul>
 
@@ -85,7 +90,12 @@ export default {
       console.log("owner");
       console.log(owner);
       let tradecontract = new ethers.Contract(tradeaddress, Trade.abi, signer);
-      await tradecontract.transferToMarket(tokenid, 1);
+      console.log(tradecontract);
+      let priceInWei = this.price * 1000000000000000000;
+      let priceInWei2string = priceInWei.toString();
+      let bigNumPrice = ethers.BigNumber.from(priceInWei2string);
+      await tradecontract.transferToMarket(tokenid, bigNumPrice);
+      this.$router.push({ path: "/" });
     },
     async approve() {
       console.log("approve");
@@ -97,9 +107,14 @@ export default {
       const signer = provider.getSigner();
       /* next, create the item */
       let contract = new ethers.Contract(tmknftaddress, TMKNFT.abi, signer);
-      let transaction = await contract.setApprovalForAll(tmknftaddress, true);
+      // let tradecontract = new ethers.Contract(tradeaddress, Trade.abi, signer);
+      let transaction = await contract.setApprovalForAll(tradeaddress, true);
       console.log("transactionapprove");
       console.log(transaction);
+    },
+    show(index) {
+      console.log("show");
+      this.whichToSell = index;
     },
   },
   created() {
@@ -114,6 +129,8 @@ export default {
       list: [],
       ownedNumber: 0,
       myAddress: null,
+      whichToSell: null,
+      price: null,
     };
   },
 };
@@ -122,6 +139,7 @@ export default {
 <style scoped>
 .picLi {
   display: inline-block;
+  position: relative;
   width: 200px;
   height: 200px;
   margin-right: 20px;
@@ -129,5 +147,29 @@ export default {
 .picLi img {
   width: 200px;
   height: 200px;
+}
+.sellDiv {
+  position: absolute;
+  display: block;
+  width: 200px;
+  height: 200px;
+  top: 0px;
+  left: 0px;
+  background-color: pink;
+  opacity: 0.8;
+}
+.sellDiv input {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: block;
+  width: 90px;
+  height: 30px;
+}
+.sellDiv button {
+  margin-top: 20px;
+  margin-left: 20px;
+  display: block;
+  width: 90px;
+  height: 30px;
 }
 </style>
