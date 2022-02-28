@@ -86,9 +86,7 @@ export default {
       return this.name + this.des + this.picurl;
     },
   },
-  created() {
-    console.log("fuck");
-  },
+  created() {},
 
   data() {
     return {

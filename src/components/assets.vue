@@ -117,10 +117,7 @@ export default {
       this.whichToSell = index;
     },
   },
-  created() {
-    console.log("fuckcreated");
-    // this.getMyNfts();
-  },
+  created() {},
   beforeMount() {
     this.getMyNfts();
   },

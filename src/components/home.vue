@@ -77,9 +77,7 @@ export default {
       console.log(result);
     },
   },
-  created() {
-    console.log("fuckcreated");
-  },
+  created() {},
   beforeMount() {
     this.getMarketNfts();
   },
