@@ -5,7 +5,7 @@
       style="height:100px"  ><el-row>
           <el-col :span="24"
             ><div class="grid-content bg-purple-dark header">
-              宇宙第一NFT交易市场
+              NFT-Market-DEMO
             </div></el-col
           >
         </el-row>

@@ -1,9 +1,25 @@
 <template>
   <div>
-    <p>请输入作品名称</p>
+    <el-form
+      :label-position="labelPosition"
+      label-width="80px"
+      :model="formLabelAlign"
+    >
+      <el-form-item label="请输入NFT名称：">
+        <el-input v-model="name"></el-input>
+      </el-form-item>
+      <el-form-item label="请输入NFT描述：">
+        <el-input v-model="des"></el-input>
+      </el-form-item>
+      <!-- <el-form-item label="活动形式">
+        <el-input type = "file"  @change="upload" ></el-input>
+      </el-form-item> -->
+      <el-form-item label="请上传NFT图片："> </el-form-item>
+    </el-form>
+    <!-- <p>请输入作品名称</p>
     <input type="text" v-model="name" />
     <p>请输入作品描述</p>
-    <input type="text" v-model="des" />
+    <input type="text" v-model="des" /> -->
     <div class="upload">
       <input type="file" class="fileinput" multiple @change="upload" />
     </div>
@@ -75,7 +91,7 @@ export default {
           this.lastTokenId = tokenId;
           console.log("lastTokenId");
           console.log(this.lastTokenId);
-          this.$router.push("./")
+          this.$router.push("./");
         } catch (error) {
           console.log("Error uploading file: ", error);
         }
@@ -96,6 +112,12 @@ export default {
       pic: "",
       picurl: "",
       lastTokenId: "",
+      labelPosition: "top",
+      formLabelAlign: {
+        name: "",
+        region: "",
+        type: "",
+      },
     };
   },
 };
@@ -104,7 +126,14 @@ export default {
 <style scoped>
 .fileinput {
   display: block;
-  margin: 20px 0;
+  margin: 50px 0;
+  width: 1000px;
+  height: 50px;
+}
+.fileinput input {
+  display: block;
+  width: 100%;
+  height: 100px;
 }
 .pic {
   width: 500px;

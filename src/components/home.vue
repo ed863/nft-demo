@@ -17,7 +17,7 @@
           <p>name: {{ item.name }}</p>
           <p>description: {{ item.des }}</p>
           <p>id: {{ item.id }}</p>
-          <p>price: {{ (item.pri / 1000000000000000000).toFixed(18) }}</p>
+          <p>price: {{ (item.pri / 1000000000000000000).toFixed(5) }}</p>
           <button @click="buy(item.id)">buy</button>
         </div>
       </li>
