@@ -1,5 +1,7 @@
 <template>
   <div>
+    
+    <button @click="approve()" style="display:block">初次出售NFT时请点此授权给合约</button>
     <ul>
       <li class="picLi" v-for="(item, index) in list" :key="index">
         <img :src="item.file" />
@@ -15,7 +17,6 @@
       </li>
     </ul>
 
-    <button @click="approve()">approve</button>
   </div>
 </template>
 
