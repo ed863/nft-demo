@@ -3,10 +3,11 @@
     <ul>
       <li class="picLi" v-for="(item, index) in list" :key="index">
         <img :src="item.file" />
-        <p>作品名称：{{ item.name }}</p>
-        <p>作品描述：{{ item.des }}</p>
-        <!-- <button @click="sell(index)">点击卖出</button> -->
-        <button @click="show(index)">点击卖出</button>
+        <div class="belowImg">
+          <p>作品名称：{{ item.name }}</p>
+          <p>作品描述：{{ item.des }}</p>
+          <button @click="show(index)">点击卖出</button>
+        </div>
         <div class="sellDiv" v-if="whichToSell == index">
           <input type="text" placeholder="输入价格" v-model="price" />
           <button @click="sell(index)">确认</button>
@@ -144,6 +145,7 @@ export default {
 .picLi img {
   width: 200px;
   height: 200px;
+  display: block;
 }
 .sellDiv {
   position: absolute;
@@ -168,5 +170,20 @@ export default {
   display: block;
   width: 90px;
   height: 30px;
+}
+
+.belowImg {
+  position: absolute;
+  width: 200px;
+}
+
+.belowImg p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.belowImg p:hover{
+  overflow: auto;
+  text-overflow: clip;
 }
 </style>

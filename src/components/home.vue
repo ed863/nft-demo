@@ -1,13 +1,25 @@
 <template>
   <div>
+    <el-row>
+      <el-col :span="12"
+        ><div class="grid-content bg-purple" v-if="this.list == []">
+          无NFT正在出售，此页暂无内容显示
+        </div></el-col
+      >
+      <el-col :span="12"
+        ><div class="grid-content bg-purple-light"></div
+      ></el-col>
+    </el-row>
     <ul>
       <li class="picLi" v-for="(item, index) in list" :key="index">
         <img :src="item.file" />
-        <p>name: {{ item.name }}</p>
-        <p>description: {{ item.des }}</p>
-        <p>id: {{ item.id }}</p>
-        <p>price: {{ (item.pri / 1000000000000000000).toFixed(18) }}</p>
-        <button @click="buy(item.id)">buy</button>
+        <div class="belowImg">
+          <p>name: {{ item.name }}</p>
+          <p>description: {{ item.des }}</p>
+          <p>id: {{ item.id }}</p>
+          <p>price: {{ (item.pri / 1000000000000000000).toFixed(18) }}</p>
+          <button @click="buy(item.id)">buy</button>
+        </div>
       </li>
     </ul>
   </div>
@@ -104,5 +116,20 @@ export default {
 .picLi img {
   width: 200px;
   height: 200px;
+}
+
+.belowImg {
+  position: absolute;
+  width: 200px;
+}
+
+.belowImg p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.belowImg p:hover {
+  overflow: auto;
+  text-overflow: clip;
 }
 </style>

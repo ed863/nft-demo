@@ -61,20 +61,21 @@ export default {
           let contract = new ethers.Contract(tmknftaddress, TMKNFT.abi, signer);
           let transaction = await contract.userMint(fullUrl);
           let tx = await transaction.wait();
-          console.log("tx");
-          console.log(tx);
-          console.log("tx.events");
-          console.log(tx.events);
-          console.log("tx.events[0],also event");
-          console.log(tx.events[0]);
+          // console.log("tx");
+          // console.log(tx);
+          // console.log("tx.events");
+          // console.log(tx.events);
+          // console.log("tx.events[0],also event");
+          // console.log(tx.events[0]);
           let event = tx.events[0];
           let value = event.args[2];
-          console.log("value");
-          console.log(value);
+          // console.log("value");
+          // console.log(value);
           let tokenId = value.toNumber();
           this.lastTokenId = tokenId;
           console.log("lastTokenId");
           console.log(this.lastTokenId);
+          this.$router.push("./")
         } catch (error) {
           console.log("Error uploading file: ", error);
         }
