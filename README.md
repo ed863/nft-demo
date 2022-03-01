@@ -1,47 +1,17 @@
-# 如 yarn install 遇到报错请尝试 npm install
+### 总结
 
-## Project setup
+此库为登链社区小白沙赛四组作品，实现了一个简单的本地测试链 NFT 交易市场。通过创建，卖出，买入等功能实现了一个简单的闭环。涉及到了 solidity，hardhat，vue，elementUI 等技术栈。
 
-```
-yarn install
-```
+### 启动
 
-### Compiles and hot-reloads for development
+1，安装依赖：  
+yarn install （如遇报错，可尝试 npm install）
 
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-
-```
-yarn build
-```
-
-### Lints and fixes files
-
-```
-yarn lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
----
-
-# Basic Sample Hardhat Project
-
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
+2，启动本地测试链：  
 npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+
+3，编译并部署合约到本地测试链：  
+npx hardhat run scripts/deploy.js --network localhost
+
+4，启动页面：  
+yarn serve
